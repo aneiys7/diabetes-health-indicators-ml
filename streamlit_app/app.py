@@ -113,7 +113,17 @@ with col_pred:
 
         with tab2:
             st.subheader(f"Estimated Diabetes Stage: {multi_stage}")
-            st.info("Stage 0: Healthy | Stage 1: Pre-diabetic | Stage 2: Diabetic")
+            
+            if multi_stage == 0:
+              st.success("Stage 0: Healthy / Low Risk")
+            elif multi_stage == 1:
+              st.info("Stage 1: Pre-diabetic")
+            elif multi_stage <= 3:
+              st.warning("Stage 2-3: Early-Stage Diabetes")
+            else:
+             st.error(f"Stage {multi_stage}: Advanced / Chronic Diabetes")
+        
+             st.info("Clinical Note: Higher stages indicate increased complexity and potential complications.")
 
         with tab3:
             st.subheader("Diabetes Risk Score")
